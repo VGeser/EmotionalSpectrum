@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="dialog_message">You chose violence</string>
+    <string name="agree">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="main_text">How are you feeling today?</string>
+    <string name="spectrum">Spectrum</string>
+</resources>
