@@ -1,2 +1,3 @@
 created changelog
 15.02.2022 - написала Function.java
+28.02.2022 - переделала Function.java, добавив зависимость R от размера экрана
