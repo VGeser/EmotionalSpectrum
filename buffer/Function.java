@@ -1,3 +1,14 @@
+public static int[] getScreenSize(Context context) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        if (context instanceof Activity) {
+            ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        } else {
+            displayMetrics = context.getResources().getDisplayMetrics();
+        }
+        return new int[]{displayMetrics.widthPixels, displayMetrics.heightPixels};
+    }
+
+
 public class Function
 {
 	public static double square (double x) {
@@ -6,35 +17,40 @@ public class Function
 	
 	public static float func (float x, float y) {
 	    int S;
-	    if (square(x - 237.5) + square(y + 237.5) < square(237.5)) {
-	        if (x > 237.5) {
-	            if (y > 1.37638182 * x - 564.3907069) {
+	    int R = getScreenSize() / 2;
+
+	    if (square(x - R) + square(y + R) < square(R)) {
+
+	        if (x > R) {
+
+	            if (y > (R / 172.55385046) * x - (R / 0.4208077)) {
 	                S = 19;
 	            }
-	            else if (y > 0.32492 * x - 314.6685165) {
+	            else if (y > (R / 730.949156715) * x - (R / 0.754762512)) {
 	                S = 23;
 	            }
-	            else if (y > -0.32492 * x - 160.331483) {
+	            else if (y > -(R / 730.949156715) * x - (R / 1.4813060)) {
 	                S = 7;
 	            }
-	            else if (y > -1.37638192 * x + 89.3907066644) {
+	            else if (y > -(R / 172.55385046) * x + (R / 2.65687574)) {
 	                S = 3;
 	            }
 	            else {
 	                S = 13;
 	            }
 	        }
+
 	        else {
-	            if (y > -1.37638192 * x + 89.3907066644) {
+	            if (y > -(R / 172.55385046) * x + (R / 2.65687574)) {
 	                S = 5;
 	            }
-	            else if (y > -0.32492 * x - 160.331483) {
+	            else if (y > -(R / 730.949156715) * x - (R / 1.4813060)) {
 	                S = 2;
 	            }
-	            else if (y > 0.32492 * x - 314.6685165) {
+	            else if (y > (R / 730.949156715) * x - (R / 0.754762512)) {
 	                S = 11;
 	            }
-	            else if (y > 1.37638182 * x - 564.3907069) {
+	            else if (y > (R / 172.55385046) * x - (R / 0.4208077)) {
 	                S = 29;
 	            }
 	            else {
