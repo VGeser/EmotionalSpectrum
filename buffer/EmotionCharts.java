@@ -18,7 +18,7 @@ public class EmotionCharts extends Application {
         final LineChart<String,Number> lineChart =
                 new LineChart<String,Number>(xAxis,yAxis);
 
-        lineChart.setTitle("Stock Monitoring, 2010");
+        lineChart.setTitle("Emotion chart");
 
         XYChart.Series series = new XYChart.Series();
         series.setName("My portfolio");
