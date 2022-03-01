@@ -21,7 +21,7 @@ public class EmotionCharts extends Application {
         lineChart.setTitle("Emotion chart");
 
         XYChart.Series series = new XYChart.Series();
-        series.setName("My portfolio");
+        series.setName("My chart");
 
         series.getData().add(new XYChart.Data("1 Feb", 23));
         series.getData().add(new XYChart.Data("4 Feb", 14));
