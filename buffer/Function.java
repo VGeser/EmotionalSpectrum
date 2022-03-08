@@ -10,16 +10,12 @@ public static int[] getScreenSize(Context context) {
 
 
 public class Function
-{
-	public static double square (double x) {
-	    return (x * x);
-	}
-	
+{	
 	public static float func (float x, float y) {
 	    int S;
 	    int R = getScreenSize() / 2;
 
-	    if (square(x - R) + square(y + R) < square(R)) {
+	    if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < Math.pow((R), 2)) {
 
 	        if (x > R) {
 
