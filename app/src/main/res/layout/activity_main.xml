@@ -24,8 +24,8 @@
 
     <ImageView
         android:id="@+id/spectrum"
-        android:layout_width="410sp"
-        android:layout_height="410sp"
+        android:layout_width="match_parent"
+        android:layout_height="380sp"
         android:clickable="true"
         android:contentDescription="@string/spectrum"
         android:focusable="true"
@@ -57,14 +57,13 @@
         android:id="@+id/place_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_color="@color/gray"
         android:foregroundGravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <!--TextView
             android:id="@+id/frame_text"
             android:layout_width="350sp"
             android:layout_height="wrap_content"
@@ -74,14 +73,13 @@
             android:text="@string/frame_layout"
             android:textAlignment="center"
             android:textSize="25sp"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
 
 
-            </TextView>
+            </TextView-->
     </FrameLayout>
 
     <TextView
@@ -91,7 +89,6 @@
         android:textSize="25sp"
         android:fontFamily="@font/cambo"
         android:gravity="top"
-        android:text="@string/example"
         android:textAlignment="textStart"
 
         app:layout_constraintBottom_toBottomOf="parent"
@@ -107,9 +104,18 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:onClick="buttonClick"
+        android:onClick="statsClick"
         android:text="@string/button_text"
+        />
+
+    <Button
+        android:id="@+id/button_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="settingsClick"
+        android:text="@string/button_setting"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

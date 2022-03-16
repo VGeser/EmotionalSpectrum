@@ -8,6 +8,7 @@
     <string name="main_text">How are you feeling today?</string>
     <string name="spectrum">Spectrum</string>
     <string name="button_text">See stats</string>
-    <string name="filler">Your statistics will appear here</string>
+    <string name="filler">Your data will appear here</string>
     <string name="button_back">Go back</string>
+    <string name="button_setting">Settings</string>
 </resources>

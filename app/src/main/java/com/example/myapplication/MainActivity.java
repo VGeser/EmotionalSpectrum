@@ -27,7 +27,7 @@ public class MainActivity extends FragmentActivity{
         setContentView(R.layout.activity_main);
         this.image= (ImageView)this.findViewById(R.id.spectrum);
         this.textView=(TextView)this.findViewById(R.id.text);
-        this.image.setImageResource(R.drawable.not_transparent);
+        this.image.setImageResource(R.drawable.round);//change source
         this.button = (Button)this.findViewById(R.id.button_next);
         ConfirmationFragment cf = new ConfirmationFragment();
 
@@ -60,8 +60,13 @@ public class MainActivity extends FragmentActivity{
         toast.show();
     }
 
-    public void buttonClick(View view) {
+    public void statsClick(View view) {
         Intent i = new Intent(MainActivity.this, StatsActivity.class);
+        MainActivity.this.startActivity(i);
+    }
+
+    public void settingsClick(View view) {
+        Intent i = new Intent(MainActivity.this, SettingsActivity.class);
         MainActivity.this.startActivity(i);
     }
 
