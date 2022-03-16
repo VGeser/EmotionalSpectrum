@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="example">- you were feeling happy at 2:45 PM \n- you were feeling calm at 8:15 PM</string>
     <string name="dialog_message">You chose violence</string>
     <string name="agree">Yes</string>
+    <string name="frame_layout">We recommend physical activity to decrease your stress levels</string>
     <string name="cancel">Cancel</string>
     <string name="main_text">How are you feeling today?</string>
     <string name="spectrum">Spectrum</string>
