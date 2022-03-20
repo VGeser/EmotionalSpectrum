@@ -13,11 +13,12 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
+import java.time.LocalTime;
+
 public class MainActivity extends FragmentActivity{
     private ImageView image;
     private TextView textView;
-    private float curX;
-    private float curY;
+    private double res_id;
     private Button button;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -34,29 +35,28 @@ public class MainActivity extends FragmentActivity{
         image.setOnTouchListener((view, motionEvent) -> {
             if(motionEvent.getAction()==MotionEvent.ACTION_UP){
                 view.performClick();
-                //Calculator calculator = new Calculator();
-                curX = motionEvent.getX();
-                curY = motionEvent.getY();
-                //byte res_id = calculator.emotion(x,y);
-                //String text = String.valueOf(res_id);
+                Calculator calculator = Calculator.getInstance();
+                float curX = motionEvent.getX();
+                Context context = getApplicationContext();
+                Toast toast = Toast.makeText(context, String.valueOf(curX), Toast.LENGTH_SHORT);
+                toast.show();
+                float curY = motionEvent.getY();
+                res_id = calculator.calculate(curX,curY);
+                cf.out_text = String.valueOf(res_id);
+
                 cf.show(getSupportFragmentManager(),"confirm");
             } return view.onTouchEvent(motionEvent);
         });
     }
 
     public void doPositiveClick(){
-        String str = String.valueOf(curX);
-        textView.append("Current X: " + str + " ");
-        str = String.valueOf(curY);
-        textView.append("Current Y: " + str + "\n");
-        //Context context = getApplicationContext();
-        //Toast toast = Toast.makeText(context, "Positive", Toast.LENGTH_SHORT);
-        //toast.show();
+        LocalTime time = LocalTime.now();
+        textView.append("You were feeling " + res_id + " at " + time);
     }
 
     public void doNegativeClick(){
         Context context = getApplicationContext();
-        Toast toast = Toast.makeText(context, "Negative", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT);
         toast.show();
     }
 
