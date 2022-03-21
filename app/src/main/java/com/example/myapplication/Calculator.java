@@ -1,85 +1,68 @@
 package com.example.myapplication;
 
-
 import android.app.Activity;
 import android.content.Context;
-import android.util.DisplayMetrics;
 
 public class Calculator {
     public static Calculator instance = null;
+
     public static Calculator getInstance() {
         if (instance == null)
             instance = new Calculator();
 
         return instance;
     }
-    /*public static int[] getScreenSize(Context context) {
-    DisplayMetrics displayMetrics = new DisplayMetrics();
-    if (context instanceof Activity) {
-        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-    } else {
-        displayMetrics = context.getResources().getDisplayMetrics();
-    }
-    return new int[]{displayMetrics.widthPixels, displayMetrics.heightPixels};
-}*/
 
-    static double calculate(float x, float y) { //Context c
+    static String calculate(float x, float y, float R) {
+        String Emotion;
         int S = 0, Int = 0;
-        int R = 380 / 2; //getScreenSize(c) / 2;
         double ID = 0;
+        Emotion = "out_of_circle";
 
-        if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < Math.pow((R), 2)) {
-
-            if (x > R) {
-
-                if (y > (R / 172.55385046) * x - (R / 0.4208077)) {
-                    S = 19;
-                } else if (y > (R / 730.949156715) * x - (R / 0.754762512)) {
-                    S = 23;
-                } else if (y > -(R / 730.949156715) * x - (R / 1.4813060)) {
-                    S = 7;
-                } else if (y > -(R / 172.55385046) * x + (R / 2.65687574)) {
-                    S = 3;
-                } else {
-                    S = 13;
-                }
+        if (Math.pow((x - R), 2) + Math.pow((y - R), 2) < Math.pow((R), 2)) {
+            if ((x > R) && (y > (R / 392.441860465) * x - (R / 2.64864864865))) {
+                S = 13;
+                Emotion = "disguise";
+            } else if ((x > R) && (y > (R / 1661.53846154) * x + (R / 1.48171275672))) {
+                S = 3;
+                Emotion = "suffering";
+            } else if ((x > R) && (y > -(R / 1661.53846154) * x + (R / 0.75476234071))) {
+                S = 7;
+                Emotion = "shame";
+            } else if ((x > R) && (y > -(R / 392.441860465) * x + (R / 0.42080785757))) {
+                S = 23;
+                Emotion = "fear";
+            } else if (x > R) {
+                S = 19;
+                Emotion = "guilt";
+            } else if ((x <= R) && (y < (R / 392.441860465) * x - (R / 2.64864864865))) {
+                S = 5;
+                Emotion = "anger";
+            } else if ((x <= R) && (y < (R / 1661.53846154) * x + (R / 1.48171275672))) {
+                S = 2;
+                Emotion = "joy";
+            } else if ((x <= R) && (y < -(R / 1661.53846154) * x + (R / 0.75476234071))) {
+                S = 11;
+                Emotion = "pride";
+            } else if ((x <= R) && (y < -(R / 392.441860465) * x + (R / 0.42080785757))) {
+                S = 29;
+                Emotion = "anticipation";
             } else {
-                if (y > -(R / 172.55385046) * x + (R / 2.65687574)) {
-                    S = 5;
-                } else if (y > -(R / 730.949156715) * x - (R / 1.4813060)) {
-                    S = 2;
-                } else if (y > (R / 730.949156715) * x - (R / 0.754762512)) {
-                    S = 11;
-                } else if (y > (R / 172.55385046) * x - (R / 0.4208077)) {
-                    S = 29;
-                } else {
-                    S = 17;
-                }
+                S = 17;
+                Emotion = "contempt";
             }
 
-            if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (Math.pow((R), 2)) / 10) {
-                Int = 10;
-            } else if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (2 * Math.pow((R), 2)) / 10) {
-                Int = 9;
-            } else if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (3 * Math.pow((R), 2)) / 10) {
-                Int = 8;
-            } else if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (4 * Math.pow((R), 2)) / 10) {
-                Int = 7;
-            } else if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (5 * Math.pow((R), 2)) / 10) {
-                Int = 6;
-            } else if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (6 * Math.pow((R), 2)) / 10) {
-                Int = 5;
-            } else if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (7 * Math.pow((R), 2)) / 10) {
-                Int = 4;
-            } else if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (8 * Math.pow((R), 2)) / 10) {
-                Int = 3;
-            } else if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (9 * Math.pow((R), 2)) / 10) {
-                Int = 2;
-            } else {
-                Int = 1;
+            for (int i = 1; i < 11; i++) {
+                if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (i * Math.pow((R), 2)) / 10)
+                    Int = 11 - i;
+                else
+                    Int = 1;
             }
+
+            ID = (x + y) * 0.36 * S * Int;
+
         }
-        ID = (x + y) * 0.36 * S * Int;
-        return ID;
+        return Emotion;
     }
 }
+

@@ -11,4 +11,7 @@
     <string name="filler">Your data will appear here</string>
     <string name="button_back">Go back</string>
     <string name="button_setting">Settings</string>
+    <string name="switch1">Display emotion names</string>
+    <string name="yes">On</string>
+    <string name="no">Off</string>
 </resources>

@@ -3,7 +3,9 @@ package com.example.myapplication;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -15,46 +17,70 @@ import androidx.fragment.app.FragmentActivity;
 
 import java.time.LocalTime;
 
-public class MainActivity extends FragmentActivity{
+public class MainActivity extends FragmentActivity {
     private ImageView image;
     private TextView textView;
     private double res_id;
     private Button button;
+    private String emotion;
+    SharedPreferences sharedPreferences;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.image= (ImageView)this.findViewById(R.id.spectrum);
-        this.textView=(TextView)this.findViewById(R.id.text);
-        this.image.setImageResource(R.drawable.round);//change source
-        this.button = (Button)this.findViewById(R.id.button_next);
+        this.image = (ImageView) this.findViewById(R.id.spectrum1);
+        this.textView = (TextView) this.findViewById(R.id.text);
+        this.image.setImageResource(R.drawable.round_without_emots);//change source
+        this.button = (Button) this.findViewById(R.id.button_next);
         ConfirmationFragment cf = new ConfirmationFragment();
+        sharedPreferences = getSharedPreferences("EmotionPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        if (sharedPreferences.contains("name_setting")){
+            boolean nameOn = sharedPreferences.getBoolean("name_setting",false);
+            if(nameOn){
+                image.setImageResource(R.drawable.round);
+            }else{
+                image.setImageResource(R.drawable.round_without_emots);
+            }
+        }else{
+            editor.putBoolean("name_setting",false);
+            editor.apply();
+        }
+        /*boolean imageOption = getIntent().getExtras().getBoolean("name_choice");
+        if(imageOption){
+            image.setImageResource(R.drawable.round);
+        }else {
+            image.setImageResource(R.drawable.round_without_emots);
+        }*/
 
         image.setOnTouchListener((view, motionEvent) -> {
-            if(motionEvent.getAction()==MotionEvent.ACTION_UP){
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 view.performClick();
                 Calculator calculator = Calculator.getInstance();
                 float curX = motionEvent.getX();
-                Context context = getApplicationContext();
-                Toast toast = Toast.makeText(context, String.valueOf(curX), Toast.LENGTH_SHORT);
-                toast.show();
                 float curY = motionEvent.getY();
-                res_id = calculator.calculate(curX,curY);
-                cf.out_text = String.valueOf(res_id);
+                DisplayMetrics metrics = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(metrics);
+                int width = metrics.widthPixels;
+                emotion = calculator.calculate(curX, curY, width / 2);
+                cf.out_text = emotion;
+                //cf.out_text = String.valueOf(res_id);
 
-                cf.show(getSupportFragmentManager(),"confirm");
-            } return view.onTouchEvent(motionEvent);
+                if (!emotion.equals("out_of_circle"))
+                    cf.show(getSupportFragmentManager(), "confirm");
+            }
+            return view.onTouchEvent(motionEvent);
         });
     }
 
-    public void doPositiveClick(){
+    public void doPositiveClick() {
         LocalTime time = LocalTime.now();
-        textView.append("You were feeling " + res_id + " at " + time);
+        textView.append("You were feeling " + emotion + " at " + time + "\n");
     }
 
-    public void doNegativeClick(){
+    public void doNegativeClick() {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT);
         toast.show();
