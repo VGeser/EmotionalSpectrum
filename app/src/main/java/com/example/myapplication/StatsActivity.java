@@ -2,8 +2,11 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
@@ -11,15 +14,15 @@ import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.util.Date;
-
 public class StatsActivity extends AppCompatActivity {
+    private Button backButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        GraphView graph = (GraphView) findViewById(R.id.graph);
-
+        setContentView(R.layout.activity_stats);
+        this.backButton = (Button)this.findViewById(R.id.button_back);
+        //GraphView graph = (GraphView) findViewById(R.id.graph);
         /*Это просто какойто пример. По идее я получаю id эмоции, ее интенсивнось
          и дату отметки*/
 
@@ -42,20 +45,23 @@ public class StatsActivity extends AppCompatActivity {
         series.setDrawDataPoints(true); // draw points
         series.setDataPointsRadius(5); // radius of the data point
         series.setThickness(2); //line thickness
-        graph.addSeries(series);
+        //graph.addSeries(series);
 
         //Chart name
-        graph.setTitle("Expenses");
-        graph.setTitleTextSize(50);
-        graph.setTitleColor(Color.RED);
+       // graph.setTitle("Expenses");
+        //graph.setTitleTextSize(50);
+       // graph.setTitleColor(Color.RED);
         //Legend
-        graph.getLegendRenderer().setVisible(true);
-        graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
+       // graph.getLegendRenderer().setVisible(true);
+       // graph.getLegendRenderer().setAlign(LegendRenderer.LegendAlign.TOP);
 
         //Axis signatures
-        GridLabelRenderer gridLabel = graph.getGridLabelRenderer();
-        gridLabel.setHorizontalAxisTitle("X Axis Title");
-        gridLabel.setVerticalAxisTitle("Y Axis Title");
-
+      //  GridLabelRenderer gridLabel = graph.getGridLabelRenderer();
+        //gridLabel.setHorizontalAxisTitle("X Axis Title");
+        //gridLabel.setVerticalAxisTitle("Y Axis Title");
+    }
+    public void buttonClick(View view) {
+        Intent i = new Intent(StatsActivity.this, MainActivity.class);
+        StatsActivity.this.startActivity(i);
     }
 }
