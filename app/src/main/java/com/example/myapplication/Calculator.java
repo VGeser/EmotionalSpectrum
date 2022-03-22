@@ -1,8 +1,5 @@
 package com.example.myapplication;
 
-import android.app.Activity;
-import android.content.Context;
-
 public class Calculator {
     public static Calculator instance = null;
 
@@ -13,13 +10,16 @@ public class Calculator {
         return instance;
     }
 
-    static String calculate(float x, float y, float R) {
+    static Record calculate(float x, float y, float R) {
         String Emotion;
         int S = 0, Int = 0;
         double ID = 0;
         Emotion = "out_of_circle";
+        float xSq = (x - R)*(x-R);
+        float ySq = (y - R)*(y-R);
+        float RSq = R*R;
 
-        if (Math.pow((x - R), 2) + Math.pow((y - R), 2) < Math.pow((R), 2)) {
+        if ( xSq+ ySq < RSq) {
             if ((x > R) && (y > (R / 392.441860465) * x - (R / 2.64864864865))) {
                 S = 13;
                 Emotion = "disguise";
@@ -51,9 +51,9 @@ public class Calculator {
                 S = 17;
                 Emotion = "contempt";
             }
-
+            float ySq1 = (y + R)*(y + R);
             for (int i = 1; i < 11; i++) {
-                if (Math.pow((x - R), 2) + Math.pow((y + R), 2) < (i * Math.pow((R), 2)) / 10)
+                if (xSq + ySq1 < (i * RSq) / 10)
                     Int = 11 - i;
                 else
                     Int = 1;
@@ -62,7 +62,7 @@ public class Calculator {
             ID = (x + y) * 0.36 * S * Int;
 
         }
-        return Emotion;
+        return new Record(ID,S,Int,Emotion,"");
     }
 }
 
