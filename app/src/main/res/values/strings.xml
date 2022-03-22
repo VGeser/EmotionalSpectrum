@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="example">- you were feeling happy at 2:45 PM \n- you were feeling calm at 8:15 PM</string>
+    <string name="app_name">Emotional Spectrum</string>
     <string name="dialog_message">You chose violence</string>
     <string name="agree">Yes</string>
     <string name="frame_layout">We recommend physical activity to decrease your stress levels</string>
@@ -14,4 +13,6 @@
     <string name="switch1">Display emotion names</string>
     <string name="yes">On</string>
     <string name="no">Off</string>
+    <string name="switch2">Displaying graph</string>
+    <string name="switch3">Displaying data</string>
 </resources>

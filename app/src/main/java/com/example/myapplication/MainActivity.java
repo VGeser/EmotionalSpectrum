@@ -15,15 +15,18 @@ import android.widget.Toast;
 
 import androidx.fragment.app.FragmentActivity;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class MainActivity extends FragmentActivity {
     private ImageView image;
     private TextView textView;
-    private double res_id;
-    private Button button;
-    private String emotion;
+    private String current;
+    private int currentID;
+    private GsonEditor gsonEditor;
     SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -32,28 +35,11 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         this.image = (ImageView) this.findViewById(R.id.spectrum1);
         this.textView = (TextView) this.findViewById(R.id.text);
-        this.image.setImageResource(R.drawable.round_without_emots);//change source
-        this.button = (Button) this.findViewById(R.id.button_next);
+        this.image.setImageResource(R.drawable.round_without_emots);
+        Button button = (Button) this.findViewById(R.id.button_next);
         ConfirmationFragment cf = new ConfirmationFragment();
         sharedPreferences = getSharedPreferences("EmotionPrefs", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        if (sharedPreferences.contains("name_setting")){
-            boolean nameOn = sharedPreferences.getBoolean("name_setting",false);
-            if(nameOn){
-                image.setImageResource(R.drawable.round);
-            }else{
-                image.setImageResource(R.drawable.round_without_emots);
-            }
-        }else{
-            editor.putBoolean("name_setting",false);
-            editor.apply();
-        }
-        /*boolean imageOption = getIntent().getExtras().getBoolean("name_choice");
-        if(imageOption){
-            image.setImageResource(R.drawable.round);
-        }else {
-            image.setImageResource(R.drawable.round_without_emots);
-        }*/
+        editor = sharedPreferences.edit();
 
         image.setOnTouchListener((view, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
@@ -64,23 +50,69 @@ public class MainActivity extends FragmentActivity {
                 DisplayMetrics metrics = new DisplayMetrics();
                 getWindowManager().getDefaultDisplay().getMetrics(metrics);
                 int width = metrics.widthPixels;
-                emotion = calculator.calculate(curX, curY, width / 2);
-                cf.out_text = emotion;
-                //cf.out_text = String.valueOf(res_id);
+                cf.currentRecord = calculator.calculate(curX, curY, width / 2);
 
-                if (!emotion.equals("out_of_circle"))
+                if (!cf.currentRecord.getEmotionName().equals("out_of_circle"))
                     cf.show(getSupportFragmentManager(), "confirm");
             }
             return view.onTouchEvent(motionEvent);
         });
     }
 
-    public void doPositiveClick() {
-        LocalTime time = LocalTime.now();
-        textView.append("You were feeling " + emotion + " at " + time + "\n");
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(sharedPreferences.contains("most_recent")){
+            current = sharedPreferences.getString("most_recent","");
+            textView.setText(current);
+        }else {
+            editor.putString("most_recent",current);
+        }
+        if(sharedPreferences.contains("current_id")){
+            currentID = sharedPreferences.getInt("cur_id",0);
+        }else {
+            editor.putInt("cur_id",currentID);
+        }
+        if (sharedPreferences.contains("name_setting")){
+            boolean nameOn = sharedPreferences.getBoolean("name_setting",false);
+            if(nameOn){
+                image.setImageResource(R.drawable.round);
+            }else{
+                image.setImageResource(R.drawable.round_without_emots);
+            }
+        }else{
+            editor.putBoolean("name_setting",false);
+        }
+        if(sharedPreferences.contains("next_id")){
+            this.currentID = sharedPreferences.getInt("next_id",0);
+        }else {
+            currentID = 0;
+            editor.putInt("next_id",0);
+        }
+        String json;
+        if(!sharedPreferences.contains("data")){
+            editor.putString("data","");
+        }
+        editor.apply();
+        json = sharedPreferences.getString("data", "");
+        gsonEditor = GsonEditor.getInstance(json);
+        gsonEditor.parseGson();
     }
 
-    public void doNegativeClick() {
+    void doPositiveClick(Record next) {
+        LocalTime time = LocalTime.now();
+        LocalDate date = LocalDate.now();
+        String dateS = date.toString();
+        next.setDate(dateS);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
+        String formatted = time.format(dtf);
+        current = "You were feeling " + next.getEmotionName() + " at " + formatted + "\n";
+        textView.append(current);
+        gsonEditor.addRecord(currentID,next);
+        currentID++;
+    }
+
+    void doNegativeClick() {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT);
         toast.show();
@@ -94,6 +126,17 @@ public class MainActivity extends FragmentActivity {
     public void settingsClick(View view) {
         Intent i = new Intent(MainActivity.this, SettingsActivity.class);
         MainActivity.this.startActivity(i);
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        editor.putInt("next_id",currentID);
+        String savedAs = gsonEditor.saveData();
+        editor.putString("data",savedAs);
+        editor.putString("most_recent",current);
+        editor.putInt("cur_id",currentID);
+        editor.apply();
     }
 
 }

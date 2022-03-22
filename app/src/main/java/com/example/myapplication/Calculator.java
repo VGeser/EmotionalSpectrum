@@ -1,8 +1,5 @@
 package com.example.myapplication;
 
-import android.app.Activity;
-import android.content.Context;
-
 public class Calculator {
     public static Calculator instance = null;
 
@@ -13,7 +10,7 @@ public class Calculator {
         return instance;
     }
 
-    static String calculate(float x, float y, float R) {
+    static Record calculate(float x, float y, float R) {
         String Emotion;
         int S = 0, Int = 0;
         double ID = 0;
@@ -62,7 +59,7 @@ public class Calculator {
             ID = (x + y) * 0.36 * S * Int;
 
         }
-        return Emotion;
+        return new Record(ID,S,Int,Emotion,"");
     }
 }
 
