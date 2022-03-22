@@ -1,60 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:ignore="RtlCompat">
+
+
+    <Button
+        android:id="@+id/menu"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:fontFamily="@font/cambo"
+        android:onClick="menuButton"
+        android:text="lol"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/main_text"
-        android:layout_width="0dp"
+        android:layout_width="0sp"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
+        android:fontFamily="@font/cambo"
         android:gravity="top"
         android:text="@string/main_text"
+        android:textAlignment="center"
+        android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <ImageView
         android:id="@+id/spectrum"
-        android:layout_width="360sp"
-        android:layout_height="360sp"
+        android:layout_width="410sp"
+        android:layout_height="410sp"
         android:clickable="true"
         android:contentDescription="@string/spectrum"
         android:focusable="true"
         android:scaleType="fitCenter"
-        app:layout_constraintTop_toBottomOf="@id/main_text"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:srcCompat="@drawable/not_transparent" />
+        app:layout_constraintTop_toBottomOf="@id/main_text"
+        app:srcCompat="@drawable/round" />
+
+
+    <ImageView
+        android:id="@+id/spectrum1"
+        android:layout_width="410sp"
+        android:layout_height="410sp"
+        android:clickable="true"
+        android:contentDescription="@string/spectrum"
+        android:focusable="true"
+        android:scaleType="fitCenter"
+        android:visibility="invisible"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_text"
+        app:srcCompat="@drawable/round_without_emots" />
+
 
     <FrameLayout
         android:id="@+id/place_holder"
         android:layout_width="match_parent"
-        android:layout_height="70sp"
+        android:layout_height="match_parent"
         android:foregroundGravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/frame_text"
+            android:layout_width="350sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#bababa"
+            android:fontFamily="@font/cambo"
+            android:text="@string/frame_layout"
+            android:textAlignment="center"
+            android:textSize="25sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+
+        </TextView>
+    </FrameLayout>
 
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="190sp"
+        android:layout_height="170sp"
+        android:textSize="25sp"
+        android:fontFamily="@font/cambo"
+        android:gravity="top"
+        android:text="@string/example"
+        android:textAlignment="textStart"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@id/spectrum"
-        app:layout_constraintTop_toBottomOf="@+id/spectrum"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/spectrum" />
+
     <Button
         android:id="@+id/button_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cambo"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

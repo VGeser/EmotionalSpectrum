@@ -19,16 +19,19 @@ public class MainActivity extends FragmentActivity{
     private float curX;
     private float curY;
     private Button button;
+    private Button button_menu;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.nav_activity_main);
         this.image= (ImageView)this.findViewById(R.id.spectrum);
-        this.textView=(TextView)this.findViewById(R.id.text);
+        this.textView = (TextView)this.findViewById(R.id.text);
         this.image.setImageResource(R.drawable.not_transparent);
         this.button = (Button)this.findViewById(R.id.button_next);
+        this.button_menu = (Button)this.findViewById(R.id.menu);
+
         ConfirmationFragment cf = new ConfirmationFragment();
 
         image.setOnTouchListener((view, motionEvent) -> {
@@ -42,6 +45,11 @@ public class MainActivity extends FragmentActivity{
                 cf.show(getSupportFragmentManager(),"confirm");
             } return view.onTouchEvent(motionEvent);
         });
+    }
+
+    public void menuButton(View view) {
+        Intent i = new Intent(MainActivity.this, SecondActivity.class);
+        MainActivity.this.startActivity(i);
     }
 
     public void doPositiveClick(){
