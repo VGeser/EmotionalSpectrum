@@ -44,6 +44,16 @@
         />
 
     <Button
+        android:id="@+id/button_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/switch3"
+        android:layout_centerHorizontal="true"
+        android:onClick="deleteClick"
+        android:text="@string/switch4"
+        />
+
+    <Button
         android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

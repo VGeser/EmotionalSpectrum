@@ -13,7 +13,7 @@ public class Calculator {
     static Record calculate(float x, float y, float R) {
         String Emotion;
         int S = 0, Int = 0;
-        double ID = 0;
+        float ID = 0;
         Emotion = "out_of_circle";
         float xSq = (x - R)*(x-R);
         float ySq = (y - R)*(y-R);
@@ -59,7 +59,7 @@ public class Calculator {
                     Int = 1;
             }
 
-            ID = (x + y) * 0.36 * S * Int;
+            ID = (float) ((x + y) * 0.36 * S * Int);
 
         }
         return new Record(ID,S,Int,Emotion,"");

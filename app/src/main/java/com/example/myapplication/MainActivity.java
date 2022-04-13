@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import java.time.format.DateTimeFormatter;
 public class MainActivity extends FragmentActivity {
     private ImageView image;
     private TextView textView;
-    private String current;
+    private String current = "";
     //private Button menuButton;
     private int currentID;
     private GsonEditor gsonEditor;
@@ -64,39 +65,45 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(sharedPreferences.contains("most_recent")){
-            current = sharedPreferences.getString("most_recent","");
+        if (sharedPreferences.contains("most_recent")) {
+            current = sharedPreferences.getString("most_recent", "");
+            Log.println(Log.ERROR, "Reached", "has most recent");
             textView.setText(current);
-        }else {
-            editor.putString("most_recent",current);
+        } else {
+            editor.putString("most_recent", current);
+            Log.println(Log.ERROR, "Reached", "no recent");
         }
-        if(sharedPreferences.contains("current_id")){
-            currentID = sharedPreferences.getInt("cur_id",0);
-        }else {
-            editor.putInt("cur_id",currentID);
+        if (sharedPreferences.contains("current_id")) {
+            currentID = sharedPreferences.getInt("cur_id", 0);
+            Log.println(Log.ERROR, "Reached", "has id");
+        } else {
+            editor.putInt("cur_id", currentID);
         }
-        if (sharedPreferences.contains("name_setting")){
-            boolean nameOn = sharedPreferences.getBoolean("name_setting",false);
-            if(nameOn){
+        if (sharedPreferences.contains("name_setting")) {
+            boolean nameOn = sharedPreferences.getBoolean("name_setting", false);
+            if (nameOn) {
                 image.setImageResource(R.drawable.round);
-            }else{
+            } else {
                 image.setImageResource(R.drawable.round_without_emots);
             }
-        }else{
-            editor.putBoolean("name_setting",false);
+        } else {
+            editor.putBoolean("name_setting", false);
         }
-        if(sharedPreferences.contains("next_id")){
-            this.currentID = sharedPreferences.getInt("next_id",0);
-        }else {
+        if (sharedPreferences.contains("next_id")) {
+            this.currentID = sharedPreferences.getInt("next_id", 0);
+        } else {
             currentID = 0;
-            editor.putInt("next_id",0);
+            editor.putInt("next_id", 0);
         }
         String json;
-        if(!sharedPreferences.contains("data")){
-            editor.putString("data","");
+        if (!sharedPreferences.contains("data")) {
+            editor.putString("data", "");
         }
         editor.apply();
         json = sharedPreferences.getString("data", "");
+        Log.println(Log.ERROR, "Current MA data", json);
+        Log.println(Log.ERROR, "Current MA ID", String.valueOf(currentID));
+        Log.println(Log.ERROR, "Current MA str", current);
         gsonEditor = GsonEditor.getInstance(json);
         gsonEditor.parseGson();
     }
@@ -110,7 +117,7 @@ public class MainActivity extends FragmentActivity {
         String formatted = time.format(dtf);
         current = ("You were feeling " + next.getEmotionName() + " at " + formatted + "\n");
         textView.append(current);
-        gsonEditor.addRecord(currentID,next);
+        gsonEditor.addRecord(currentID, next);
         currentID++;
     }
 
@@ -136,14 +143,23 @@ public class MainActivity extends FragmentActivity {
     }
 
     @Override
-    protected void onStop(){
+    protected void onStop() {
         super.onStop();
-        editor.putInt("next_id",currentID);
+        editor.putInt("next_id", currentID);
+        Log.println(Log.ERROR, "Putting", String.valueOf(currentID));
         String savedAs = gsonEditor.saveData();
-        editor.putString("data",savedAs);
-        editor.putString("most_recent",current);
-        editor.putInt("cur_id",currentID);
+        if(!savedAs.equals("{}")){
+            editor.putString("data", savedAs);
+            Log.println(Log.ERROR, "Putting", savedAs);
+        }
+        editor.putString("most_recent", current);
+        Log.println(Log.ERROR, "Putting", current);
+        editor.putInt("cur_id", currentID);
         editor.apply();
+        Log.println(Log.ERROR, "Action", "Saved");
+        Toast toast = new Toast(getApplicationContext());
+        toast.setText("Now you can delete");
+        toast.show();
     }
 
 }

@@ -1,9 +1,12 @@
 package com.example.myapplication;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class GsonEditor {
@@ -17,6 +20,10 @@ public class GsonEditor {
         return instance;
     }
 
+    public static GsonEditor getInstance() {
+        return instance;
+    }
+
     private final String filename;
 
     private GsonEditor(String filename) {
@@ -25,7 +32,7 @@ public class GsonEditor {
     }
 
     private final Gson gson;
-    private TreeMap <Integer,Record> data = new TreeMap<>();
+    private static TreeMap <Integer,Record> data = new TreeMap<>();
 
     public void parseGson(){
         Type type = new TypeToken<TreeMap<Integer,Record>>() {}.getType();
@@ -37,8 +44,20 @@ public class GsonEditor {
         }
     }
 
+    public Map<Integer,Record> flatten(){
+        return data;
+    }
+
     public void addRecord(int id, Record record){
-        data.put(id,record);
+        if(id<=5){
+            data.put(id,record);
+        }else {
+            String d1 = data.get(id - 6).getDate();
+            String d2 = data.get(id - 1).getDate();
+            if(d1.equals(d2))
+                data.put(id,record);
+        }
+        Log.println(Log.ERROR,"Last Record:",record.getEmotionName()+ "  "+id);
     }
 
     public String saveData(){

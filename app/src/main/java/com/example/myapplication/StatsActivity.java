@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,9 @@ import com.jjoe64.graphview.LegendRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
+import java.util.Iterator;
+import java.util.Map;
+
 public class StatsActivity extends AppCompatActivity {
     private Button backButton;
     SharedPreferences sharedPreferences;
@@ -29,9 +33,9 @@ public class StatsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stats);
-        this.backButton = (Button) this.findViewById(R.id.button_back);
-        graph = (GraphView) findViewById(R.id.graph);
-        textView = (TextView) findViewById(R.id.text_data);
+        this.backButton = this.findViewById(R.id.button_back);
+        graph = findViewById(R.id.graph);
+        textView = findViewById(R.id.text_data);
         sharedPreferences = getSharedPreferences("EmotionPrefs", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     /*Это просто какойто пример. По идее я получаю id эмоции, ее интенсивнось
@@ -80,7 +84,7 @@ public class StatsActivity extends AppCompatActivity {
         }else {
             displayedData = String.valueOf(R.string.filler);
         }
-        textView.setText(displayedData);
+        textSetter();
         if (sharedPreferences.contains("graph_setting")) {
             boolean graphOn = sharedPreferences.getBoolean("graph_setting", false);
             if (graphOn) {
@@ -90,6 +94,7 @@ public class StatsActivity extends AppCompatActivity {
             }
         }else{
             editor.putBoolean("graph_setting",false);
+            editor.apply();
         }
         if (sharedPreferences.contains("text_setting")) {
             boolean graphOn = sharedPreferences.getBoolean("text_setting", false);
@@ -100,8 +105,29 @@ public class StatsActivity extends AppCompatActivity {
             }
         }else{
             editor.putBoolean("text_setting",false);
+            editor.apply();
         }
-        editor.apply();
+    }
+
+    private void textSetter(){
+        Context context = getApplicationContext();
+        Resources resources = context.getResources();
+        GsonEditor gsonEditor = GsonEditor.getInstance();
+        gsonEditor.parseGson();
+        Map<Integer,Record> vals = gsonEditor.flatten();
+        Iterator<Record> iterator = vals.values().iterator();
+        Record r;
+        textView.append(resources.getString(R.string.raw0)+"\n");
+        while(iterator.hasNext()){
+            r= iterator.next();
+            textView.append(resources.getString(R.string.raw1));
+            textView.append(r.getEmotionName()+"\n");
+            textView.append(resources.getString(R.string.raw2));
+            textView.append(r.getDate()+"\n");
+            textView.append(resources.getString(R.string.raw3));
+            textView.append(r.getIntensity() +"\n");
+            textView.append(resources.getString(R.string.separator)+"\n");
+        }
     }
 
     public void buttonClick(View view) {

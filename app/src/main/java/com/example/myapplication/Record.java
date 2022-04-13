@@ -5,7 +5,7 @@ public class Record {
         return ID;
     }
 
-    public void setID(double ID) {
+    public void setID(float ID) {
         this.ID = ID;
     }
 
@@ -25,7 +25,7 @@ public class Record {
         return date;
     }
 
-    private double ID;
+    private float ID;
 
     public void setS(int s) {
         S = s;
@@ -47,7 +47,7 @@ public class Record {
     private int intensity;
     private String emotionName, date;
 
-    public Record(double ID, int s, int intensity, String emotionName, String date) {
+    public Record(float ID, int s, int intensity, String emotionName, String date) {
         this.ID = ID;
         this.S = s;
         this.intensity = intensity;
