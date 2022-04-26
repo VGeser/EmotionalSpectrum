@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-
+/**
 import com.example.myapplication.databinding.FragmentGalleryBinding;
 
 public class GalleryFragment extends Fragment {
@@ -34,4 +34,4 @@ public class GalleryFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-}
+} **/

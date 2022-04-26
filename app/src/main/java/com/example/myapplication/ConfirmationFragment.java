@@ -9,16 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 //implements CurrentValue
 public class ConfirmationFragment extends DialogFragment {
-    private String out_text;
+    Record currentRecord;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage(R.string.dialog_message);
+        builder.setMessage("You chose " + currentRecord.getEmotionName());
         builder.setPositiveButton(R.string.agree, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        ((MainActivity) getActivity()).doPositiveClick();
+                        ((MainActivity) getActivity()).doPositiveClick(currentRecord);
                     }
                 });
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
