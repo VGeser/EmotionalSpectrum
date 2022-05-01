@@ -164,10 +164,16 @@ public class MainActivity extends FragmentActivity {
         return true;
     }
 
-    private void displayAdvice(){
+    private void displayAdvice() {
         AdviceFragment af = new AdviceFragment();
-        af.currentRecord = gsonEditor.getRecord(currentID-1);
-        if (af.currentRecord != null && af.currentRecord.getIntensity() > 5) {
+        int cuid;
+        if (currentID == 0) {
+            cuid = 0;
+        } else {
+            cuid = currentID - 1;
+        }
+        af.currentRecord = gsonEditor.getRecord(cuid);
+        if (af.currentRecord != null && af.currentRecord.getIntensity() >= 5) {
             af.show(getSupportFragmentManager(), "advice");
         }
     }
