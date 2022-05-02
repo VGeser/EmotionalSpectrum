@@ -129,6 +129,7 @@ public class MainActivity extends FragmentActivity {
         current = ("You were feeling " + next.getEmotionName() + " at " + formatted + "\n");
         textView.append(current);
         gsonEditor.addRecord(currentID, next);
+        Log.println(Log.ERROR,"Last Record:",next.getEmotionName()+"\n");
         currentID++;
         displayAdvice();
     }
@@ -184,6 +185,7 @@ public class MainActivity extends FragmentActivity {
         editor.putInt("next_id", currentID);
         Log.println(Log.ERROR, "Putting", String.valueOf(currentID));
         String savedAs = gsonEditor.saveData();
+        Log.println(Log.ERROR,"Editors' data",gsonEditor.flatten().toString());
         if (!savedAs.equals("{}")) {
             editor.putString("data", savedAs);
             Log.println(Log.ERROR, "Putting", savedAs);

@@ -111,7 +111,7 @@ public class StatsActivity extends AppCompatActivity {
         Context context = getApplicationContext();
         Resources resources = context.getResources();
         GsonEditor gsonEditor = GsonEditor.getInstance();
-        gsonEditor.parseGson(displayedData);
+        //gsonEditor.parseGson(displayedData);
         Map<Integer,Record> vals = gsonEditor.flatten();
         Iterator<Record> iterator = vals.values().iterator();
         Record r;
