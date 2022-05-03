@@ -6,3 +6,4 @@ created changelog
 15.03.2022 - закончила работу с Function.java, переименовала в Calculator.java
 21.03.2022 - оптимизировала Calculator.java, привязала к Main Activity 
 05.04.2022 - написала советы для преодоления определенных негативных эмоций
+01.05.2022 - написала AdviceFragment.java
