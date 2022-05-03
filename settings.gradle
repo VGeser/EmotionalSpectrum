@@ -3,7 +3,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+<<<<<<< Updated upstream
         jcenter() // Warning: this repository is going to shut down soon
+=======
+        maven { url 'https://jitpack.io' }
+>>>>>>> Stashed changes
     }
 }
 rootProject.name = "My Application"

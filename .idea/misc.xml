@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< Updated upstream
         <entry key="..\:/Users/elena/Documents/GitHub/app/src/main/res/layout/activity_stats.xml" value="0.1" />
       </map>
     </option>
@@ -13,4 +14,16 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+=======
+        <entry key="..\:/Users/elena/Documents/EmotionalSpectrumProject/app/src/main/res/layout/activity_bar_chart.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/elena/Documents/EmotionalSpectrumProject/app/src/main/res/layout/activity_bar_chart_iactivity.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/elena/Documents/EmotionalSpectrumProject/app/src/main/res/layout/activity_pie_chart.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/elena/Documents/EmotionalSpectrumProject/app/src/main/res/layout/activity_radar_chart.xml" value="0.19270833333333334" />
+        <entry key="..\:/Users/elena/Documents/EmotionalSpectrumProject/app/src/main/res/layout/activity_stats.xml" value="0.22282608695652173" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+>>>>>>> Stashed changes
 </project>
