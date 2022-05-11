@@ -11,6 +11,10 @@ import androidx.fragment.app.DialogFragment;
 public class AdviceFragment extends DialogFragment {
     Record currentRecord;
 
+    int getLength(int advLength) {
+        return (int)Math.floor(Math.random() * advLength);
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -31,34 +35,34 @@ public class AdviceFragment extends DialogFragment {
 
         switch(currentEmotion) {
             case "guilt":
-                builder.setMessage(guiltAdvices[(int)Math.floor(Math.random() * guiltAdvices.length)]);
+                builder.setMessage(guiltAdvices[getLength(guiltAdvices.length)]);
                 break;
             case "fear":
-                builder.setMessage(fearAdvices[(int)Math.floor(Math.random() * fearAdvices.length)]);
+                builder.setMessage(fearAdvices[getLength(fearAdvices.length)]);
                 break;
             case "anger":
-                builder.setMessage(angerAdvices[(int)Math.floor(Math.random() * angerAdvices.length)]);
+                builder.setMessage(angerAdvices[getLength(angerAdvices.length)]);
                 break;
             case "shame":
-                builder.setMessage(shameAdvices[(int)Math.floor(Math.random() * shameAdvices.length)]);
+                builder.setMessage(shameAdvices[getLength(shameAdvices.length)]);
                 break;
             case "suffering":
-                builder.setMessage(sufferingAdvices[(int)Math.floor(Math.random() * sufferingAdvices.length)]);
+                builder.setMessage(sufferingAdvices[getLength(sufferingAdvices.length)]);
                 break;
             case "disguise":
-                builder.setMessage(disguiseAdvices[(int)Math.floor(Math.random() * disguiseAdvices.length)]);
+                builder.setMessage(disguiseAdvices[getLength(disguiseAdvices.length)]);
                 break;
             case "contempt":
-                builder.setMessage(contemptAdvices[(int)Math.floor(Math.random() * contemptAdvices.length)]);
+                builder.setMessage(contemptAdvices[getLength(contemptAdvices.length)]);
                 break;
             case "anticipation":
-                builder.setMessage(anticipationAdvices[(int)Math.floor(Math.random() * anticipationAdvices.length)]);
+                builder.setMessage(anticipationAdvices[getLength(anticipationAdvices.length)]);
                 break;
             case "pride":
-                builder.setMessage(prideAdvices[(int)Math.floor(Math.random() * prideAdvices.length)]);
+                builder.setMessage(prideAdvices[getLength(prideAdvices.length)]);
                 break;
             case "joy":
-                builder.setMessage(joyAdvices[(int)Math.floor(Math.random() * joyAdvices.length)]);
+                builder.setMessage(joyAdvices[getLength(joyAdvices.length)]);
                 break;
         }
 
