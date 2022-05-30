@@ -2,7 +2,6 @@
     <string name="app_name">Emotional Spectrum</string>
     <string name="dialog_message">You chose violence</string>
     <string name="agree">Yes</string>
-    <string name="frame_layout">We recommend physical activity to decrease your stress levels</string>
     <string name="cancel">Cancel</string>
     <string name="main_text">How are you feeling today?</string>
     <string name="spectrum">Spectrum</string>
@@ -29,11 +28,72 @@
     <string name="raw2">Date:</string>
     <string name="raw3">Intensity:</string>
 
+    <string name="warning">You cannot enter more than 5 records per day</string>
+    <string-array name="guiltAdvices">
+        <item>If you find yourself only focusing on negative thoughts, consider ways to think differently about the situation. Were there other factors that played a role? What can you do differently in the future? Finding a way to shift your focus from the negative to more realistic, positive thoughts may help you move past your feelings of self-recrimination.</item>
+        <item>Learning how to practice self-forgiveness can be an important tool for letting go of guilt. Forgiving yourself does not mean letting yourself off the hook if you have made a mistake or caused someone harm; instead, it is about taking responsibility, allowing yourself some time to express remorse, making amends, and then finding a way to move on.</item>
+        <item>Sharing your feelings with a close friend can sometimes be helpful. Social support can play a pivotal role in coping with difficult emotions, so maintaining your relationships with friends and loved ones is important.</item>
+        <item>If you struggle to talk to your loved ones about your feelings of guilt or if they are not providing the type of support you need, discussing your feelings with a mental health professional can also be helpful. Traditional face-to-face therapy sessions are one option, but online therapy may also be a convenient option that you might want to consider.</item>
+    </string-array>
+    <string-array name="fearAdvices">
+        <item>If you are scared of activities that you know roughly what to expect such as job interviews, going to the dentist and confronting people, the best way to overcome it is to prepare. Practicing or thinking through what is going to happen prior to the event itself removes much of the uncertainty that causes fear.</item>
+        <item>Fear stems from a lack of control so focusing on things that you can control can help reduce your feelings. If you are fearful of something major that you do not have much control over, find one small thing that you can take action on and focus your attention on that so fear does not overwhelm you.</item>
+        <item>Research shows that it is easier to let go of your fear by engaging in a self-soothing behavior that relaxes you than it is to try to talk yourself out of being afraid. Find the self-soothing behavior that distracts you from your fear whether it is prayer, meditation, yoga, a hobby etc. and put more time into this practice when you are afraid.</item>
+    </string-array>
+    <string-array name="angerAdvices">
+        <item>In the heat of the moment, it is easy to say something you will later regret. Take a few moments to collect your thoughts before saying anything. Also allow others involved in the situation to do the same.</item>
+        <item>As soon as you are thinking clearly, express your frustration in an assertive but nonconfrontational way. State your concerns and needs clearly and directly, without hurting others or trying to control them.</item>
+        <item>Physical activity can help reduce stress that can cause you to become angry. If you feel your anger escalating, go for a brisk walk or run. Or spend some time doing other enjoyable physical activities.</item>
+        <item>Give yourself short breaks during times of the day that tend to be stressful. A few moments of quiet time might help you feel better prepared to handle what is ahead without getting irritated or angry.</item>
+        <item>Instead of focusing on what made you mad, work on resolving the issue at hand. Does your childs messy room make you upset? Close the door. Is your partner late for dinner every night? Schedule meals later in the evening. Or agree to eat on your own a few times a week. Also, understand that some things are simply out of your control. Try to be realistic about what you can and cannot change. Remind yourself that anger will not fix anything and might only make it worse.</item>
+        <item>Criticizing or placing blame might only increase tension. Instead, use \"I\" statements to describe the problem. Be respectful and specific. For example, say, \"I am upset that you left the table without offering to help with the dishes\" instead of \"You never do any housework.\"</item>
+        <item>Forgiveness is a powerful tool. If you allow anger and other negative feelings to crowd out positive feelings, you might find yourself swallowed up by your own bitterness or sense of injustice. Forgiving someone who angered you might help you both learn from the situation and strengthen your relationship.</item>
+        <item>Lightening up can help diffuse tension. Use humor to help you face what is making you angry and, possibly, any unrealistic expectations you have for how things should go. Avoid sarcasm, though — it can hurt feelings and make things worse.</item>
+        <item>When your temper flares, put relaxation skills to work. Practice deep-breathing exercises, imagine a relaxing scene, or repeat a calming word or phrase, such as \"Take it easy.\" You might also listen to music, write in a journal or do a few yoga poses — whatever it takes to encourage relaxation.</item>
+        <item>Learning to control anger can be a challenge at times. Seek help for anger issues if your anger seems out of control, causes you to do things you regret or hurts those around you.</item>
+    </string-array>
+    <string-array name="shameAdvices">
+        <item>To move past shame, start by developing some compassion for yourself. We are often much harder on ourselves than we are on anyone else. In fact, if we treated others the way we treat ourselves, we would probably be ostracized or locked up.</item>
+        <item>Try to regard yourself the way you would a friend. Imagine a friend telling you they were ashamed of whatever it was that you did, or whatever happened to you. Imagine reacting with compassion, knowing that although your friend is not perfect, they deserve to be happy. Try extending that same feeling to yourself.</item>
+        <item>Try opening up about shame. This is what really allows you to heal. As noted above, shame wants to hide but that only makes it worse. If you do not yet feel like you can open up to someone you trust and care about, consider opening up in therapy.</item>
+    </string-array>
+    <string-array name="sufferingAdvices">
+        <item>Try relaxation techniques. There are many different types of relaxation techniques that can be helpful during the time of emotional pain and stress. These include using simple breathing techniques, meditation or mindfulness activities or it could even include grounding exercises, which are helpful in situations of trauma or acute stress.</item>
+        <item>Use your creativity. This could be drawing, knitting, art, dance, photography, music, pottery, or really any activity that you enjoy. Music can help you drain your emotion out.</item>
+        <item>Write in a journal. Writing can be very powerful and help to actually release the emotions.</item>
+        <item>Exercise. Physical exercise is a key component of mind-body wellness. Movement can allow for our negative emotions to become unstuck and actually move; therefore, allowing us to process these emotions and release them. So, do not discount the importance of going for a walk or going to the gym.</item>
+        <item>Distract yourself. There are times when our emotional state can be overwhelming and difficult to manage. This is when having a distraction could be helpful with coping. A distraction can be something as simple as watching a movie or having coffee with a friend.</item>
+        <item>Learn to identify unhealthy patterns with your thinking, such as rumination or negative thinking and work toward changing those patterns. For example, when you notice yourself engaging in negative thinking or ruminating over the bad situation that happened, use self-talk to change that pattern. You can say things like, “I will get through this,” “I am strong” or “I am brave.” First, you must identify when we are not thinking in a healthy manner and then work to change that.</item>
+    </string-array>
+    <string-array name="disguiseAdvices">
+        <item>Try to practice mindfulness. Mindfulness refers to your awareness of the present moment and ability to experience things as they happen. Emotional mindfulness means acknowledging and accepting feelings as they come up, even if you choose not to express them immediately.</item>
+        <item>Share your feelings honestly. Your emotions are part of your life experience. Discounting them can eventually invalidate your identity and sense of self, and prevent you from achieving personal goals. There are ways to share feelings, even negative ones, without being rude. It helps to practice emotional communication by first opening up to loved ones and others you trust.</item>
+        <item>Talk to someone you trust. If you do not get a chance to express your emotions, talking about them later can still help, particularly if you cannot change the circumstances.</item>
+    </string-array>
+    <string-array name="contemptAdvices">
+        <item>There are several ways to reshape feelings of contempt into healthy means of communication. Instead of using phrases like \"you always\" or \"you never\", try statements that directly address how you are feeling—rather than what they are doing wrong. \"I am stressed about the chores, and I would love your help tackling them so we can move on with our day,\" is a constructive response to annoyances around the house.</item>
+        <item>During intense disagreements, people tend to interrupt or think about their responses while their partners are talking. I suggest listening without interrupting and empathizing with your partner to validate their emotions. Everyone is entitled to their own feelings, so do your best not to criticize, judge, belittle your partner, or minimize the importance of their feelings</item>
+        <item>Contempt is a powerful feeling that can absolutely be worked through, go away, and be resolved when dealt with openly, honestly, and directly. When it is especially-troubling, it is better to reach out to a third party like a therapist, religious leader, relationship counselor, or psychologist for advice.</item>
+    </string-array>
+    <string-array name="anticipationAdvices">
+        <item>If you find your anticipation anxiety too much, you might benefit from some of the following activities to control this emotion: deep breathing, progressive muscle relaxation, counting objects around the room</item>
+    </string-array>
+    <string-array name="prideAdvices">
+        <item>Prideful thinking can be interpreted as “your way or the highway.” By staying open-minded, you will already be serving yourself and team members better.</item>
+        <item>If you feel yourself shutting someone down before someone even finishes a sentence, take a breath and make yourself focus on their opinion. If you do not agree or understand, ask a clarifying question. Being open-minded will boost team morale and you will also wind up with better ideas and results.</item>
+        <item>Listening is the antithesis to pride because when you are giving someone else the opportunity to express themselves or their ideas, you are putting your pride aside. Focus more on listening instead of talking and see how many new things you learn in the process.</item>
+        <item>Whenever you feel yourself becoming stubborn, argumentative, or defensive (symptoms of pride), ask yourself this one question: “Will this help me become better at my job, move up in the company, or improve the business’s bottom line?” If it is a no or even not an immediate yes, then you know you have pride to contend with and let go.</item>
+    </string-array>
+    <string-array name="joyAdvices">
+        <item>Joy predicts lower heart rate and blood pressure</item>
+        <item>Joy strengthens your immune system</item>
+        <item>Joy combats disease and disability. Happy people have fewer aches and pains</item>
+    </string-array>
+
     <string name="menu_home">Home</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_statistics">Statistics</string>
     <string name="menu_get_help">Get Help</string>
     <string name="menu_contact_us">Contact Us</string>
     <string name="menu_exit">Exit</string>
-
 </resources>

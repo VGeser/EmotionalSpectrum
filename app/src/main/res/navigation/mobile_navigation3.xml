@@ -12,33 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_settings"
+        android:id="@+id/nav_gallery"
         android:name="com.example.myapplication.ui.gallery.GalleryFragment"
-        android:label="@string/menu_settings"
-        tools:layout="@layout/fragment_settings" />
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_statistics"
+        android:id="@+id/nav_slideshow"
         android:name="com.example.myapplication.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_statistics"
-        tools:layout="@layout/fragment_statistics" />
-
-    <fragment
-        android:id="@+id/nav_contact_us"
-        android:name="com.example.myapplication.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_contact_us"
-        tools:layout="@layout/fragment_statistics" />
-
-    <fragment
-        android:id="@+id/nav_get_help"
-        android:name="com.example.myapplication.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_get_help"
-        tools:layout="@layout/fragment_statistics" />
-
-    <fragment
-        android:id="@+id/nav_exit"
-        android:name="com.example.myapplication.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_exit"
-        tools:layout="@layout/fragment_statistics" />
-
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
 </navigation>

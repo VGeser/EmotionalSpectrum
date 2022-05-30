@@ -10,9 +10,16 @@
 
     <include
         android:id="@+id/app_bar_drawer"
-        layout="@layout/app_bar_drawer"
+        layout="@layout/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/my_nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"

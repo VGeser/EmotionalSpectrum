@@ -8,18 +8,6 @@
     tools:context=".MainActivity"
     tools:ignore="RtlCompat">
 
-    <!--
-    <Button
-        android:id="@+id/menu"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:fontFamily="@font/cambo"
-        android:onClick="menuButton"
-        android:text="TB"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints" />!-->
-
     <TextView
         android:id="@+id/main_text"
         android:layout_width="0sp"
