@@ -13,12 +13,22 @@
 =======
         android:theme="@style/Theme.EmotionalSpectrum">
         <activity
+<<<<<<< Updated upstream
             android:name=".PieChartActivity"
+=======
+            android:name=".LineChartActivity"
+>>>>>>> Stashed changes
             android:exported="false" />
         <activity
             android:name=".RadarChartActivity"
             android:exported="false" />
         <activity
+<<<<<<< Updated upstream
+=======
+            android:name=".PieChartActivity"
+            android:exported="false" />
+        <activity
+>>>>>>> Stashed changes
             android:name=".BarChartIActivity"
             android:exported="false" />
         <activity
@@ -41,7 +51,10 @@
             </intent-filter>
         </activity>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 
         <meta-data
             android:name="preloaded_fonts"
