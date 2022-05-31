@@ -6,7 +6,7 @@
  
 ## Authors:
 * Arkhipova Vlada
-* Ivakina Alisa
+* Ivankina Alisa
 * Mikhailenko Sofia
 * Yadryshnikova Elena
 
