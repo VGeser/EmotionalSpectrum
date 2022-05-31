@@ -1,6 +1,22 @@
 created changelog
-27.02.2022 - Обнаружила ошибку в классификации эмоций по координатам. Нашла как получить размер экрана -> скинула инфу Владе.
-27.02.2022 - Начала писать функциональные классы.
-29.02.2022 - Искала как сделать графики, выбрала/установила JavaFX.
-01.03.2022 - Сделала пробную функцию, рисующую график (+ функция, считающая среднее значение).
-01.03.2022 - Участвовали в написании документации.
+27.02.2022 - Found an error in the classification of emotions by coordinates. I found how to get the screen size -> I threw off the info to Vlada.
+27.02.2022 - Started writing functional classes.
+29.02.2022 - - I was looking for how to make graphs, selected/installed JavaFX.
+01.03.2022 - Made a trial function drawing a graph (+ a function counting the average value).
+01.03.2022 - Participated in writing documentation.
+10.03.2022-11.03.2022 - I thought it over and made a list of necessary schedules. I chose a type for each graph.
+15.03.2022 - Poked into JavaFX in general, I understood what needs to be done.
+20.03.2022 - Completed the class drawing the graph (hardcode, of course).
+01.04.2022 - Decided that the graphs with JavaFX look ugly. I spent the day searching for a library with beautiful graphs.
+10.04.2022 - Selected and approved the library (with team) - MP Android Chart. That's really beautiful.
+15.04.2022 - after a couple of tutorials, I wrote several classes for drawing graphs. It's not working very well so far.
+16.04.2022 - 24.04.2022 - Added radar chart and pie chart
+29.04.2022 - "All" errors found, sorted out. Everything works fine.
+02.05.2022 - Made the first commit with charts.
+03.05.2022 - An incident occurred during the commit, half of the files "disappeared" :(
+03.05.2022 - Re-uploaded :)
+18.05.2022 - Added line chart.
+20.05.2022 - Tested and committed
+27.05.2022 - During testing, I found an error in the radar chart rendering (only one of the two charts was drawn)
+28.05.2022 - In short, only the last graph entered into radarData was drawn, I found what the error was. Fixed it!
+31.052.2022 - Participated in the final assembly of the project
