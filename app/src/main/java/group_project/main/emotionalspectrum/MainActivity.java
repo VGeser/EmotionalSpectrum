@@ -1,7 +1,10 @@
 package group_project.main.emotionalspectrum;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -15,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -33,12 +38,17 @@ public class MainActivity extends FragmentActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
+    DrawerLayout drawerLayout;
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_activity_main);
+        setContentView(R.layout.activity_main);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+
         this.image = this.findViewById(R.id.spectrum1);
         this.textView = this.findViewById(R.id.text);
         this.image.setImageResource(R.drawable.round_without_emots);
@@ -198,6 +208,83 @@ public class MainActivity extends FragmentActivity {
         Toast toast = new Toast(getApplicationContext());
         toast.setText("Now you can delete");
         toast.show();
+    }
+
+
+    public void ClickMenu (View view) {
+        openDrawer(drawerLayout);
+    }
+
+    private static void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void ClickLogo (View view){
+        closeDrawer(drawerLayout);
+    }
+
+    private static void closeDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+    public void ClickHome (View view){
+        recreate();
+    }
+
+    public void ClickSettings (View view){
+        redirectActivity(this, SettingsActivity.class);
+    }
+
+    public void ClickStatistics (View view){
+        redirectActivity(this, StatsActivity.class);
+    }
+
+    public void ClickGetHelp (View view){
+        redirectActivity(this, GetHelpActivity.class);
+    }
+
+    public void ClickContactUs (View view){
+        redirectActivity(this, ContactUsActivity.class);
+    }
+
+    public void ClickExit (View view){
+        exit(this);
+    }
+
+    private static void exit(Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle("Exit");
+        builder.setMessage("Are you sure you want to exit?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                activity.finishAffinity();
+                System.exit(0);
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
+    }
+
+    private static void redirectActivity(Activity activity, Class aClass) {
+        Intent intent = new Intent(activity, aClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeDrawer(drawerLayout);
     }
 
 }

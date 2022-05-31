@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:onClick="ClickLogo"
+        android:padding="10dp"
+        android:src="@drawable/logo_click_menu"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickHome">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/soft_black"
+            android:fontFamily="@font/dihjautis_bold"
+            android:layout_weight="1"
+            android:text="@string/menu_home"
+            android:textSize="32dp"
+            android:padding="12dp"
+            android:layout_marginStart="9dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickSettings">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/soft_black"
+            android:fontFamily="@font/dihjautis_bold"
+            android:layout_weight="1"
+            android:text="@string/menu_settings"
+            android:padding="12dp"
+            android:textSize="32dp"
+            android:layout_marginStart="9dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickStatistics">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/soft_black"
+            android:fontFamily="@font/dihjautis_bold"
+            android:layout_weight="1"
+            android:text="@string/menu_statistics"
+            android:padding="12dp"
+            android:textSize="32dp"
+            android:layout_marginStart="9dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickGetHelp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_get_help"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/soft_black"
+            android:fontFamily="@font/dihjautis_bold"
+            android:layout_weight="1"
+            android:text="@string/menu_get_help"
+            android:textSize="32dp"
+            android:padding="12dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickContactUs">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_contact_us"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/soft_black"
+            android:fontFamily="@font/dihjautis_bold"
+            android:layout_weight="1"
+            android:textSize="32dp"
+            android:text="@string/menu_contact_us"
+            android:padding="12dp"
+             />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickExit">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:src="@drawable/ic_exit" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/soft_black"
+            android:fontFamily="@font/dihjautis_bold"
+            android:layout_weight="1"
+            android:textSize="32dp"
+            android:text="@string/menu_exit"
+            android:padding="12dp"
+             />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
