@@ -8,16 +8,10 @@
     tools:context=".RadarChartActivity">
 
     <com.github.mikephil.charting.charts.LineChart
-<<<<<<< HEAD
         android:id="@+id/lineChart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-=======
-        android:id="@+id/radarChart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
->>>>>>> 03b1c30d859eef8a0cd0ace6449b08964aaed5eb
     <Button
         android:id="@+id/button_back"
         android:layout_width="wrap_content"

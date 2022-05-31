@@ -24,11 +24,7 @@ public class RadarChartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_radar_chart);
 
         RadarChart radarChart = findViewById(R.id.radarChart);
-<<<<<<< Updated upstream
-// FREQUENCY
-=======
 
->>>>>>> Stashed changes
         ArrayList<RadarEntry> correlationFr = new ArrayList<>();
         correlationFr.add(new RadarEntry(34));
         correlationFr.add(new RadarEntry(23));
@@ -47,10 +43,6 @@ public class RadarChartActivity extends AppCompatActivity {
         radarDataSetForCorrelationFr.setValueTextColor(Color.BLACK);
         radarDataSetForCorrelationFr.setValueTextSize(14f);
 
-<<<<<<< Updated upstream
-        // INTENSE
-=======
->>>>>>> Stashed changes
         ArrayList<RadarEntry> correlationIn = new ArrayList<>();
         correlationIn.add(new RadarEntry(40));
         correlationIn.add(new RadarEntry(12));
@@ -62,25 +54,8 @@ public class RadarChartActivity extends AppCompatActivity {
         correlationIn.add(new RadarEntry(4));
         correlationIn.add(new RadarEntry(17));
         correlationIn.add(new RadarEntry(18));
-=======
-        ArrayList<RadarEntry> correlationIn = new ArrayList<>();
-        correlationIn.add(new RadarEntry(5));
-        correlationIn.add(new RadarEntry(10));
-        correlationIn.add(new RadarEntry(3));
-        correlationIn.add(new RadarEntry(10));
-        correlationIn.add(new RadarEntry(0));
-        correlationIn.add(new RadarEntry(10));
-        correlationIn.add(new RadarEntry(6));
-        correlationIn.add(new RadarEntry(7));
-        correlationIn.add(new RadarEntry(14));
-        correlationIn.add(new RadarEntry(2));
->>>>>>> Stashed changes
 
-<<<<<<< Updated upstream
         RadarDataSet radarDataSetForCorrelationIn = new RadarDataSet(correlationIn, "Frequency");
-=======
-        RadarDataSet radarDataSetForCorrelationIn = new RadarDataSet(correlationFr, "Frequency");
->>>>>>> Stashed changes
         radarDataSetForCorrelationIn.setColor(Color.BLUE);
         radarDataSetForCorrelationIn.setLineWidth(3f);
         radarDataSetForCorrelationIn.setValueTextColor(Color.BLACK);

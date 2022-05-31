@@ -1,18 +1,17 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        jcenter() // Warning: this repository is going to shut down soon
-=======
-        maven { url 'https://jitpack.io' }
->>>>>>> Stashed changes
-=======
-        maven { url 'https://jitpack.io' }
->>>>>>> Stashed changes
+        maven { url 'https://jitpack.io/' }
     }
 }
-rootProject.name = "My Application"
+rootProject.name = "Emotional Spectrum"
 include ':app'

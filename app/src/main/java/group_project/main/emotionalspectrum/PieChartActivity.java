@@ -1,23 +1,15 @@
 package group_project.main.emotionalspectrum;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-<<<<<<< Updated upstream
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Bundle;
-=======
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
->>>>>>> Stashed changes
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -27,25 +19,17 @@ import java.util.ArrayList;
 
 public class PieChartActivity extends AppCompatActivity {
 
-<<<<<<< Updated upstream
-=======
     SharedPreferences sharedPreferences;
     private GsonEditor gsonEditor;
 
->>>>>>> Stashed changes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart);
 
-<<<<<<< Updated upstream
         PieChart pieChart = findViewById(R.id.pieChart);
-
-=======
         sharedPreferences = getSharedPreferences("EmotionPrefs", Context.MODE_PRIVATE);
         gsonEditor = GsonEditor.getInstance(sharedPreferences.getString("data", ""));
-
-        PieChart pieChart = findViewById(R.id.pieChart);
 
         String json;
 
@@ -53,7 +37,6 @@ public class PieChartActivity extends AppCompatActivity {
         gsonEditor = GsonEditor.getInstance();
         gsonEditor.parseGson(json);
 
->>>>>>> Stashed changes
         ArrayList<PieEntry> topThree = new ArrayList<>();
         topThree.add(new PieEntry(34, "Happiness"));
         topThree.add(new PieEntry(26, "Sadness"));

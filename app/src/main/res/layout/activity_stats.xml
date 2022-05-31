@@ -6,13 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".StatsActivity">
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <com.jjoe64.graphview.GraphView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/graph" />
-=======
+        android:layout_height="500sp"
+        tools:layout_editor_absoluteX="0sp"
+        tools:layout_editor_absoluteY="-127sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/text_data"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </ScrollView>
 
     <Button
         android:id="@+id/buttonBarChart"
@@ -24,64 +36,11 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/buttonBarChartI"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="269dp"
-        android:text="@string/barcharti"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
-
-
-    <Button
-        android:id="@+id/buttonRadarChart"
-=======
-    <ScrollView
->>>>>>> Stashed changes
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="326dp"
-        android:text="@string/radar_chart"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-        android:id="@+id/buttonPieChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:text="@string/pie_chart"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
->>>>>>> Stashed changes
-
-    <Button
-        android:id="@+id/buttonBarChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-<<<<<<< Updated upstream
-=======
-        android:layout_marginTop="208dp"
-        android:text="Check Frequency of all"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <Button
-<<<<<<< HEAD
         android:id="@+id/buttonLineChart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
         android:text="Per Month"
-=======
-        android:id="@+id/ButtonLineChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="269dp"
-        android:text="Check intensity of all"
->>>>>>> 03b1c30d859eef8a0cd0ace6449b08964aaed5eb
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -119,7 +78,6 @@
         android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
->>>>>>> Stashed changes
         android:onClick="buttonClick"
         android:text="@string/button_back"
         app:layout_constraintBottom_toBottomOf="parent"

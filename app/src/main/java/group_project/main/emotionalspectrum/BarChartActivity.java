@@ -22,11 +22,7 @@ public class BarChartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bar_chart);
 
-<<<<<<< Updated upstream
         BarChart barChart = findViewById(R.id.barChart);
-=======
-        BarChart barChart = findViewById(R.id.lineChart);
->>>>>>> Stashed changes
 
         ArrayList<BarEntry> frequency = new ArrayList<>();
         frequency.add(new BarEntry(1, 21));
@@ -47,7 +43,7 @@ public class BarChartActivity extends AppCompatActivity {
 
         barChart.setFitBars(true);
         barChart.setData(barData);
-        barChart.getDescription().setText("example to check");
+        barChart.getDescription().setText("Frequency");
         barChart.animateY(2000);
     }
 
