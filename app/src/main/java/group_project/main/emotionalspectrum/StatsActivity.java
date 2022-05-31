@@ -174,6 +174,7 @@ public class StatsActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), PieChartActivity.class));
             }
         });
+<<<<<<< HEAD
 
         findViewById(R.id.buttonLineChart).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -181,6 +182,8 @@ public class StatsActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), LineChartActivity.class));
             }
         });
+=======
+>>>>>>> 03b1c30d859eef8a0cd0ace6449b08964aaed5eb
     }
 
 

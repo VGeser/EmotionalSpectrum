@@ -69,11 +69,19 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
+<<<<<<< HEAD
         android:id="@+id/buttonLineChart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="400dp"
         android:text="Per Month"
+=======
+        android:id="@+id/ButtonLineChart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="269dp"
+        android:text="Check intensity of all"
+>>>>>>> 03b1c30d859eef8a0cd0ace6449b08964aaed5eb
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 

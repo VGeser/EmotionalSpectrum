@@ -49,6 +49,8 @@ public class RadarChartActivity extends AppCompatActivity {
 
 <<<<<<< Updated upstream
         // INTENSE
+=======
+>>>>>>> Stashed changes
         ArrayList<RadarEntry> correlationIn = new ArrayList<>();
         correlationIn.add(new RadarEntry(40));
         correlationIn.add(new RadarEntry(12));
@@ -74,7 +76,11 @@ public class RadarChartActivity extends AppCompatActivity {
         correlationIn.add(new RadarEntry(2));
 >>>>>>> Stashed changes
 
+<<<<<<< Updated upstream
         RadarDataSet radarDataSetForCorrelationIn = new RadarDataSet(correlationIn, "Frequency");
+=======
+        RadarDataSet radarDataSetForCorrelationIn = new RadarDataSet(correlationFr, "Frequency");
+>>>>>>> Stashed changes
         radarDataSetForCorrelationIn.setColor(Color.BLUE);
         radarDataSetForCorrelationIn.setLineWidth(3f);
         radarDataSetForCorrelationIn.setValueTextColor(Color.BLACK);
