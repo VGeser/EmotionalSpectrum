@@ -1,13 +1,11 @@
 package group_project.main.emotionalspectrum.graphs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import group_project.main.emotionalspectrum.GsonEditor;
-import group_project.main.emotionalspectrum.R;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -17,6 +15,8 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
+import group_project.main.emotionalspectrum.GsonEditor;
+import group_project.main.emotionalspectrum.R;
 import group_project.main.emotionalspectrum.StatsActivity;
 
 public class BarIntensActivity extends AppCompatActivity {
@@ -44,12 +44,12 @@ public class BarIntensActivity extends AppCompatActivity {
         barChart.animateY(2000);
     }
 
-    private ArrayList<BarEntry> makeDataList(){
+    private ArrayList<BarEntry> makeDataList() {
         ArrayList<BarEntry> intensity = new ArrayList<>();
         GsonEditor gsonEditor = GsonEditor.getInstance();
-        int [] intens = gsonEditor.getIntensCash();
+        int[] intens = gsonEditor.getIntensCash();
         for (int i = 0; i < 10; i++) {
-            intensity.add(new BarEntry(i,intens[i]));
+            intensity.add(new BarEntry(i, intens[i]));
         }
         return intensity;
     }

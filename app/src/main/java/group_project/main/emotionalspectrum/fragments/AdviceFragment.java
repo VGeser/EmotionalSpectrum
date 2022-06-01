@@ -2,8 +2,8 @@ package group_project.main.emotionalspectrum.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.os.Bundle;
 import android.content.res.Resources;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -15,7 +15,7 @@ public class AdviceFragment extends DialogFragment {
     public Record currentRecord;
 
     private int getLength(int advLength) {
-        return (int)Math.floor(Math.random() * advLength);
+        return (int) Math.floor(Math.random() * advLength);
     }
 
     @NonNull
@@ -36,7 +36,7 @@ public class AdviceFragment extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        switch(currentEmotion) {
+        switch (currentEmotion) {
             case "guilt":
                 builder.setMessage(guiltAdvices[getLength(guiltAdvices.length)]);
                 break;

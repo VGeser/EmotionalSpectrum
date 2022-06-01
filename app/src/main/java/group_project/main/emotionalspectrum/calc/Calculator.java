@@ -34,7 +34,8 @@ public class Calculator {
                 return "Anticipation";
             case 9:
                 return "Contempt";
-        }return "None";
+        }
+        return "None";
     }
 
     public static Record calculate(float x, float y, float R) {

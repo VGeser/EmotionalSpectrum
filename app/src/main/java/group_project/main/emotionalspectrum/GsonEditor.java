@@ -16,7 +16,7 @@ public class GsonEditor {
     private int[] freqCash;
     private int[] intensCash;
     private final Gson gson;
-    private static TreeMap<Integer,Record> data = new TreeMap<>();
+    private static TreeMap<Integer, Record> data = new TreeMap<>();
 
     //constructor
     public static GsonEditor getInstance(String str) {
@@ -25,13 +25,15 @@ public class GsonEditor {
         }
         return instance;
     }
+
     public static GsonEditor getInstance() {
         return instance;
     }
+
     private GsonEditor(String filename) {
         gson = new Gson();
         this.filename = filename;
-        freqCash=new int[10];
+        freqCash = new int[10];
         intensCash = new int[10];
     }
 
@@ -39,78 +41,85 @@ public class GsonEditor {
     public int[] getFreqCash() {
         return freqCash;
     }
+
     public int[] getIntensCash() {
         return intensCash;
     }
-    public Map<Integer,Record> flatten(){
+
+    public Map<Integer, Record> flatten() {
         return data;
     }
-    public Record getRecord (int id){return data.get(id);}
-    public int getDataSize(){
-        return  data.size();
+
+    public Record getRecord(int id) {
+        return data.get(id);
+    }
+
+    public int getDataSize() {
+        return data.size();
     }
 
     //functional
-    public void parseGson(String filename){
-        if(!filename.equals("")) {
+    public void parseGson(String filename) {
+        if (!filename.equals("")) {
             this.filename = filename;
         }
-        Type type = new TypeToken<TreeMap<Integer,Record>>() {}.getType();
+        Type type = new TypeToken<TreeMap<Integer, Record>>() {
+        }.getType();
         Object temp = gson.fromJson(filename, type);
-        if(temp != null){
+        if (temp != null) {
             data = gson.fromJson(filename, type);
-        }else {
+        } else {
             data = new TreeMap<>();
         }
     }
 
-    public ArrayList<Record> perMonth (int curPtr) {
+    public ArrayList<Record> perMonth(int curPtr) {
         ArrayList<Record> res = new ArrayList<>();
-        if(data.size()<=30){
+        if (data.size() <= 30) {
             res.addAll(data.values());
-        }else{
+        } else {
             for (int i = 0; i < 30; i++) {
-                res.add(data.get(curPtr-i));
+                res.add(data.get(curPtr - i));
             }
         }
-         return res;
+        return res;
     }
 
-    public String saveFreq(){
+    public String saveFreq() {
         return gson.toJson(freqCash);
     }
 
-    public String saveIntens(){
+    public String saveIntens() {
         return gson.toJson(intensCash);
     }
 
-    public int[] loadFreq(String freqSrc){
+    public int[] loadFreq(String freqSrc) {
         Object temp = gson.fromJson(freqSrc, int[].class);
-        if(temp != null){
+        if (temp != null) {
             freqCash = gson.fromJson(freqSrc, int[].class);
-        }else {
-            Arrays.fill(freqCash,0);
+        } else {
+            Arrays.fill(freqCash, 0);
         }
         return freqCash;
     }
 
-    public int[] loadIntens(String intensSrc){
+    public int[] loadIntens(String intensSrc) {
         Object temp = gson.fromJson(intensSrc, int[].class);
-        if(temp != null){
+        if (temp != null) {
             intensCash = gson.fromJson(intensSrc, int[].class);
-        }else {
-            Arrays.fill(intensCash,0);
+        } else {
+            Arrays.fill(intensCash, 0);
         }
         return intensCash;
     }
 
-    public void clearCache (){
+    public void clearCache() {
         data.clear();
-        instance=null;
+        instance = null;
     }
 
-    public short relateF(byte i){
-        switch (i){
+    public short relateF(byte i) {
+        switch (i) {
             case 13:
                 return 0;
             case 3:
@@ -135,15 +144,15 @@ public class GsonEditor {
         return -1;
     }
 
-    public void addRecord(int id, Record record){
-        data.put(id,record);
+    public void addRecord(int id, Record record) {
+        data.put(id, record);
         byte sector = (byte) record.getS();
         byte intensity = (byte) record.getIntensity();
         freqCash[relateF(sector)]++;
-        intensCash[intensity+1]++;
+        intensCash[intensity + 1]++;
     }
 
-    public String saveData(){
+    public String saveData() {
         return gson.toJson(data);
     }
 

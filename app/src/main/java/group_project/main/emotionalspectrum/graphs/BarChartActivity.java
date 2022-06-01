@@ -1,11 +1,11 @@
 package group_project.main.emotionalspectrum.graphs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -43,12 +43,12 @@ public class BarChartActivity extends AppCompatActivity {
         barChart.animateY(2000);
     }
 
-    private ArrayList<BarEntry> makeDataList(){
+    private ArrayList<BarEntry> makeDataList() {
         ArrayList<BarEntry> frequency = new ArrayList<>();
         GsonEditor gsonEditor = GsonEditor.getInstance();
-        int [] freqs = gsonEditor.getFreqCash();
+        int[] freqs = gsonEditor.getFreqCash();
         for (int i = 0; i < 10; i++) {
-            frequency.add(new BarEntry(i,freqs[i]));
+            frequency.add(new BarEntry(i, freqs[i]));
         }
         return frequency;
     }
