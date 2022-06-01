@@ -6,7 +6,7 @@
     <string name="main_text">How are you feeling today?</string>
     <string name="spectrum">Spectrum</string>
     <string name="button_text">See stats</string>
-    <string name="filler">Your data will appear here</string>
+    <string name="filler">Your statistics will appear here</string>
     <string name="button_back">Go back</string>
     <string name="button_setting">Settings</string>
     <string name="switch1">Display emotion names</string>
@@ -31,6 +31,12 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="warning">You cannot enter more than 5 records per day</string>
+    <string name="bar_chart">Check frequency of all</string>
+    <string name="pie_chart">Three most intense emotions over past month</string>
+    <string name="radar_chart">Correlate the frequency and intensity</string>
+    <string name="barcharti">Check intensity of all</string>
+    <string name="linechart">Emotions over past month</string>
+    <string name="button_raw">See raw data</string>
     <string-array name="guiltAdvices">
         <item>If you find yourself only focusing on negative thoughts, consider ways to think differently about the situation. Were there other factors that played a role? What can you do differently in the future? Finding a way to shift your focus from the negative to more realistic, positive thoughts may help you move past your feelings of self-recrimination.</item>
         <item>Learning how to practice self-forgiveness can be an important tool for letting go of guilt. Forgiving yourself does not mean letting yourself off the hook if you have made a mistake or caused someone harm; instead, it is about taking responsibility, allowing yourself some time to express remorse, making amends, and then finding a way to move on.</item>
@@ -91,5 +97,4 @@
         <item>Joy strengthens your immune system</item>
         <item>Joy combats disease and disability. Happy people have fewer aches and pains</item>
     </string-array>
-
 </resources>

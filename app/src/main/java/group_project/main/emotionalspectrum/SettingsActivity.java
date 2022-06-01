@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,8 +22,6 @@ public class SettingsActivity extends AppCompatActivity {
         SwitchCompat switch2 = findViewById(R.id.switch2);
         SwitchCompat switch3 = findViewById(R.id.switch3);
         sharedPreferences = getSharedPreferences("EmotionPrefs", Context.MODE_PRIVATE);
-        String json = sharedPreferences.getString("data", "");
-        Log.println(Log.ERROR, "Current Setting prefs:", json);
         editor = sharedPreferences.edit();
         switch1.setChecked(sharedPreferences.getBoolean("name_setting", false));
         switch2.setChecked(sharedPreferences.getBoolean("graph_setting", false));
@@ -44,13 +41,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        String json = sharedPreferences.getString("data", "");
-        Log.println(Log.ERROR, "Current Setting prefs:", json);
-    }
-
-    @Override
     public void onStop() {
         super.onStop();
         if (needApply) {
@@ -59,8 +49,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void buttonClick(View view) {
-        String json = sharedPreferences.getString("data", "");
-        Log.println(Log.ERROR, "Current Setting prefs:", json);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         SettingsActivity.this.startActivity(intent);
     }
@@ -68,10 +56,8 @@ public class SettingsActivity extends AppCompatActivity {
     public void deleteClick(View view) {
         String str = sharedPreferences.getString("data", "");
         GsonEditor gsonEditor = GsonEditor.getInstance(str);
-        Log.println(Log.ERROR, "Current cache:", String.valueOf(gsonEditor.flatten().size()));
         gsonEditor.clearCache();
         editor.clear();
         editor.apply();
-        Log.println(Log.ERROR, "Action", "Deleted");
     }
 }

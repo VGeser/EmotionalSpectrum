@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +22,10 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
+import group_project.main.emotionalspectrum.calc.Calculator;
+import group_project.main.emotionalspectrum.fragments.AdviceFragment;
+import group_project.main.emotionalspectrum.fragments.ConfirmationFragment;
+
 public class MainActivity extends FragmentActivity {
     private ImageView image;
     private TextView textView;
@@ -39,10 +41,12 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nav_activity_main);
+        //set up clickable image and latest text
         this.image = this.findViewById(R.id.spectrum1);
         this.textView = this.findViewById(R.id.text);
         this.image.setImageResource(R.drawable.round_without_emots);
         ConfirmationFragment cf = new ConfirmationFragment();
+        //set up Shared Prefs
         sharedPreferences = getSharedPreferences("EmotionPrefs", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         gsonEditor = GsonEditor.getInstance(sharedPreferences.getString("data", ""));
@@ -50,6 +54,7 @@ public class MainActivity extends FragmentActivity {
         image.setOnTouchListener((view, motionEvent) -> {
             if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                 view.performClick();
+                //if less than 5 a day we allow add new record
                 if (checkClicks()) {
                     Calculator calculator = Calculator.getInstance();
                     float curX = motionEvent.getX();
@@ -59,9 +64,9 @@ public class MainActivity extends FragmentActivity {
 
                     if (!cf.currentRecord.getEmotionName().equals("out_of_circle"))
                         cf.show(getSupportFragmentManager(), "confirm");
-                } else {
+                } else { //if more than 5 we forbid and notify user
                     Snackbar snackbar = Snackbar.make(view, getResources().
-                            getString(R.string.warning), Snackbar.LENGTH_INDEFINITE).
+                                    getString(R.string.warning), Snackbar.LENGTH_INDEFINITE).
                             setAction(getResources().getString(R.string.cancel),
                                     view1 -> {
                                     });
@@ -73,23 +78,24 @@ public class MainActivity extends FragmentActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
+    private void setMostRecent() {
         if (sharedPreferences.contains("most_recent")) {
             current = sharedPreferences.getString("most_recent", "");
-            Log.println(Log.ERROR, "Reached", "has most recent");
             textView.setText(current);
         } else {
             editor.putString("most_recent", current);
-            Log.println(Log.ERROR, "Reached", "no recent");
         }
+    }
+
+    private void setCurId() {
         if (sharedPreferences.contains("current_id")) {
             currentID = sharedPreferences.getInt("cur_id", 0);
-            Log.println(Log.ERROR, "Reached", "has id");
         } else {
             editor.putInt("cur_id", currentID);
         }
+    }
+
+    private void setName() {
         if (sharedPreferences.contains("name_setting")) {
             boolean nameOn = sharedPreferences.getBoolean("name_setting", false);
             if (nameOn) {
@@ -100,26 +106,58 @@ public class MainActivity extends FragmentActivity {
         } else {
             editor.putBoolean("name_setting", false);
         }
+    }
+
+    private void setNextId() {
         if (sharedPreferences.contains("next_id")) {
             this.currentID = sharedPreferences.getInt("next_id", 0);
         } else {
             currentID = 0;
             editor.putInt("next_id", 0);
         }
-        String json;
+    }
+
+    private String getData() {
         if (!sharedPreferences.contains("data")) {
             editor.putString("data", "");
         }
         editor.apply();
-        json = sharedPreferences.getString("data", "");
-        Log.println(Log.ERROR, "Current MA data", json);
-        Log.println(Log.ERROR, "Current MA ID", String.valueOf(currentID));
-        Log.println(Log.ERROR, "Current MA str", current);
-        gsonEditor = GsonEditor.getInstance();
-        gsonEditor.parseGson(json);
+        return sharedPreferences.getString("data", "");
     }
 
-    void doPositiveClick(Record next) {
+    private void setFreqs() {
+        if (!sharedPreferences.contains("freqs")) {
+            editor.putString("freqs", "");
+        } else {
+            String loadedFreqs = sharedPreferences.getString("freqs", "");
+            gsonEditor.loadFreq(loadedFreqs);
+        }
+    }
+
+    private void setIntens() {
+        if (!sharedPreferences.contains("intens")) {
+            editor.putString("intens", "");
+        } else {
+            String loadedIntens = sharedPreferences.getString("intens", "");
+            gsonEditor.loadIntens(loadedIntens);
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        gsonEditor = GsonEditor.getInstance();
+        setMostRecent();
+        setCurId();
+        setName();
+        setNextId();
+        gsonEditor.parseGson(getData());
+        setFreqs();
+        setIntens();
+        editor.apply();
+    }
+
+    public void doPositiveClick(Record next) {
         LocalTime time = LocalTime.now();
         LocalDate date = LocalDate.now();
         String dateS = date.toString();
@@ -129,12 +167,11 @@ public class MainActivity extends FragmentActivity {
         current = ("You were feeling " + next.getEmotionName() + " at " + formatted + "\n");
         textView.append(current);
         gsonEditor.addRecord(currentID, next);
-        Log.println(Log.ERROR,"Last Record:",next.getEmotionName()+"\n");
         currentID++;
         displayAdvice();
     }
 
-    void doNegativeClick() {
+    public void doNegativeClick() {
         Context context = getApplicationContext();
         Toast toast = Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT);
         toast.show();
@@ -156,7 +193,6 @@ public class MainActivity extends FragmentActivity {
         if (rawData.size() >= 5) {
             Record rec = gsonEditor.getRecord(currentID - 5);
             assert rec != null;
-            Log.println(Log.ERROR, "Current record", String.valueOf(rec.getID()));
             border = rec.getDate();
             LocalDate d2 = LocalDate.now();
             String now = d2.toString();
@@ -179,25 +215,37 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
+    private void saveData() {
+        String savedAs = gsonEditor.saveData();
+        if (!savedAs.equals("{}")) {
+            editor.putString("data", savedAs);
+        }
+    }
+
+    private void saveFreq() {
+        String savedFreq = gsonEditor.saveFreq();
+        if (!savedFreq.equals("{}")) {
+            editor.putString("freqs", savedFreq);
+        }
+    }
+
+    private void saveIntens() {
+        String savedIntens = gsonEditor.saveIntens();
+        if (!savedIntens.equals("{}")) {
+            editor.putString("intens", savedIntens);
+        }
+    }
+
     @Override
     protected void onStop() {
         super.onStop();
         editor.putInt("next_id", currentID);
-        Log.println(Log.ERROR, "Putting", String.valueOf(currentID));
-        String savedAs = gsonEditor.saveData();
-        Log.println(Log.ERROR,"Editors' data",gsonEditor.flatten().toString());
-        if (!savedAs.equals("{}")) {
-            editor.putString("data", savedAs);
-            Log.println(Log.ERROR, "Putting", savedAs);
-        }
+        saveData();
+        saveFreq();
+        saveIntens();
         editor.putString("most_recent", current);
-        Log.println(Log.ERROR, "Putting", current);
         editor.putInt("cur_id", currentID);
         editor.apply();
-        Log.println(Log.ERROR, "Action", "Saved");
-        Toast toast = new Toast(getApplicationContext());
-        toast.setText("Now you can delete");
-        toast.show();
     }
 
 }
